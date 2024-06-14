@@ -1,3 +1,8 @@
 db.sqlite3
 
 *.pyc
+cer3/__pycache__/__init__.cpython-310.pyc
+cer3/__pycache__/__init__.cpython-310.pyc
+cer3/__pycache__/settings.cpython-310.pyc
+cer3/__pycache__/urls.cpython-310.pyc
+cer3/__pycache__/wsgi.cpython-310.pyc

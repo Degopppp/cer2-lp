@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  web:
+    container_name: cer3_web
+    build: .
+    command: python manage.py runserver 0.0.0.0:8080
+    volumes:
+      - .:/app/
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    
+  db:
+    container_name: cer3_db
+    image: postgres:14
+    ports:
+      - 5432:5432
+    environment:
+     POSTGRES_USER: postgres
+     POSTGRES_DB: cer3
+     POSTGRES_PASSWORD: miau123.
+
+networks:
+  default:
+    name: cer3
+
+
+  

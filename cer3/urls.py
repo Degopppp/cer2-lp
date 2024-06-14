@@ -14,9 +14,19 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from rest_framework.routers import DefaultRouter
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+
+from backend.views import *
+
+from backend.views import NumberViewSet, CreateRandomNumber
+
+router = DefaultRouter()
+router.register(r'numbers', NumberViewSet)
 
 urlpatterns = [
+    path('', include(router.urls)),
+    path('random/', CreateRandomNumber.as_view(), name='create_random_number'),
     path('admin/', admin.site.urls),
 ]
