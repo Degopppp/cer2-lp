@@ -1,11 +1,14 @@
 from rest_framework import viewsets, generics
-from backend.models import Number
+from backend.models import Number, Pokemon
 from backend.serializers.NumberSerializer import NumberSerializer
+from backend.serializers.PokemonSerializer import PokemonSerializer
+
 
 import random
 import string
 
 class NumberViewSet(viewsets.ModelViewSet):
+
     queryset = Number.objects.all()
     serializer_class = NumberSerializer
 
@@ -20,7 +23,20 @@ class NumberViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(number=number)
         return queryset
 
+class PokemonViewSet(viewsets.ModelViewSet):
+    queryset = Pokemon.objects.all()
+    serializer_class = PokemonSerializer
 
+    # def get_queryset(self):
+    #     """
+    #     Opcionalmente restringe los números devueltos al valor de 'number' que
+    #     sea igual a 10, pasando un parámetro de consulta `number=10` en la URL.
+    #     """
+    #     queryset = Number.objects.all()
+    #     number = self.request.query_params.get('number', None)
+    #     if number is not None:
+    #         queryset = queryset.filter(number=number)
+    #     return queryset
 
 class CreateRandomNumber(generics.CreateAPIView):
     serializer_class = NumberSerializer
