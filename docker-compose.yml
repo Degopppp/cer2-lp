@@ -25,7 +25,7 @@ services:
   react:
     container_name: cer3_react
     build: 
-      context: /Users/alonsodicandia/UFSM/cer3-ldp/react
+      context: /home/degop/cer3-ldp/react
       dockerfile: Dockerfile
     command: npm start
     volumes:
